@@ -1,0 +1,11 @@
+<?php
+// CONNECTION
+if (empty($db_mysql)) {
+	$host 		= "localhost"; //change with your local configuration
+	$user_db 	= "xxx"; //change with your local configuration
+	$pass_db 	= "123123"; //change with your local configuration
+	$database 	= "tester"; //change with your local configuration
+	$db_mysql  = new mysql();
+	$db_mysql->connect($host,$user_db,$pass_db,$database) or die("Tidak Dapat Tersambung Ke Database");
+}
+?>

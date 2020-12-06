@@ -1,3 +1,13 @@
+<?php
+  require("config/config.php");
+  require("controllers/c_index.php");
+  
+  if (!isset($_SESSION['S_NAMAUSER'])) {
+    header("Location:login.php");
+  } 
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +45,7 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html">Singo<span>.</span></a></h1>
+        <h1 class="text-light"><a href="index.php">Singo<span>.</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -75,170 +85,90 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
+  <?php 
+    $dataBody = getBody();
+  ?>
   <section id="hero">
     <div class="container">
       <div class="row d-flex align-items-center"">
       <div class=" col-lg-6 py-5 py-lg-0 order-2 order-lg-1" data-aos="fade-right">
-        <h1>Your new digital experience with Singo</h1>
+        <h1><?=isset($dataBody[0]['descs']) ? $dataBody[0]['descs'] : '';?></h1>
       </div>
       <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
-        <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+        <img src="assets/img/<?=isset($dataBody[0]['background_image']) ? $dataBody[0]['background_image'] : '';?>" class="img-fluid" alt="">
       </div>
     </div>
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
-
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
-      <div class="container">
-
-        <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <div class="client-logo">
-              <h1 class="text-light"><a href="index.html">Singo<span>.</span></a></h1>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <div class="client-logo">
-              <h1 class="text-light"><a href="index.html">Singo<span>.</span></a></h1>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <div class="client-logo">
-              <h1 class="text-light"><a href="index.html">Singo<span>.</span></a></h1>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <div class="client-logo">
-              <h1 class="text-light"><a href="index.html">Singo<span>.</span></a></h1>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <div class="client-logo">
-              <h1 class="text-light"><a href="index.html">Singo<span>.</span></a></h1>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <div class="client-logo">
-              <h1 class="text-light"><a href="index.html">Singo<span>.</span></a></h1>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Clients Section -->
-
     <!-- ======= About Section ======= -->
+    <?php 
+      $dataAboutUs = getAboutUs();
+    ?>
     <section id="about" class="about section-bg">
       <div class="container">
-
         <div class="row">
-          <div class="col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start">
-            <img src="assets/img/project.png" class="img-fluid" alt="">
-          </div>
-          <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch">
+          <div class="col-xl-12 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch">
             <div class="content d-flex flex-column justify-content-center">
-              <h3 data-aos="fade-in" data-aos-delay="100">Voluptatem dignissimos provident quasi</h3>
-              <p data-aos="fade-in">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
+              <h3 data-aos="fade-in" data-aos-delay="100"><?=isset($dataAboutUs[0]['title']) ? $dataAboutUs[0]['title'] : '';?></h3>
+              <?=isset($dataAboutUs[0]['descs']) ? $dataAboutUs[0]['descs'] : '';?>
               <div class="row">
-                <div class="col-md-6 icon-box" data-aos="fade-up">
-                  <i class="bx bx-receipt"></i>
-                  <h4><a href="#">Corporis voluptates sit</a></h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <i class="bx bx-cube-alt"></i>
-                  <h4><a href="#">Ullamco laboris nisi</a></h4>
-                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-                  <i class="bx bx-images"></i>
-                  <h4><a href="#">Labore consequatur</a></h4>
-                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-                  <i class="bx bx-shield"></i>
-                  <h4><a href="#">Beatae veritatis</a></h4>
-                  <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                </div>
+              <?php 
+                $dataAboutUsItem = getAboutUsItem();
+                if (!empty($dataAboutUsItem)) {
+                  foreach ($dataAboutUsItem as $data) {
+                  ?>
+                    <div class="col-md-6 icon-box" data-aos="fade-up">
+                      <h4>
+                        <a href="#"><?=isset($data['title']) ? $data['title'] : '';?></a>
+                      </h4>
+                      <p><?=isset($data['descs']) ? $data['descs'] : '';?></p>
+                    </div>
+                  <?php
+                  }
+                }
+              ?>
               </div>
             </div><!-- End .content-->
           </div>
         </div>
-
       </div>
     </section><!-- End About Section -->
 
     <!-- ======= Services Section ======= -->
+    <?php 
+      $dataServices = getServices();
+    ?>
     <section id="services" class="services section-bg">
       <div class="container">
-
         <div class="section-title">
           <h2 data-aos="fade-in">Services</h2>
-          <p data-aos="fade-in">SINGO. menyediakan layanan digital untuk membantu customer mendapatkan insight dengan para pelanggannya</p>
+          <p data-aos="fade-in"><?=isset($dataServices[0]['descs']) ? $dataServices[0]['descs'] : '';?></p>
         </div>
 
         <div class="row">
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-right">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/cctv.png" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">CCTV</a></h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-left">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/gps-tracker.png" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">GPS Tracker</a></h5>
-                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
-                <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-right">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/scan-barcode.png" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Scan Barcode</a></h5>
-                <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet</p>
-                <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-left">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/much-more.png" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">End Much More</a></h5>
-                <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam laudantium voluptatem. In molestiae earum ab sit esse voluptatem. Eos ipsam cumque ipsum officiis qui nihil aut incidunt aut</p>
-                <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
-              </div>
-            </div>
-          </div>
+          <?php 
+            $dataServicesItem = getServicesItem();
+            if (!empty($dataServicesItem)) {
+              foreach ($dataServicesItem as $data) {
+              ?>
+                <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-left">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/img/<?=$data['image']?>" alt="...">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><a href=""><?=$data['title']?></a></h5>
+                      <p class="card-text"><?=$data['descs']?></p>
+                      <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i> Read More</a></div>
+                    </div>
+                  </div>
+                </div>
+              <?php
+              }
+            }
+          ?>
         </div>
 
       </div>
@@ -325,7 +255,7 @@
     </section--><!-- End Features Section -->
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
+    <!--section id="portfolio" class="portfolio section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -475,7 +405,7 @@
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </section--><!-- End Portfolio Section -->
 
     <!-- ======= Team Section ======= -->
     <!--section id="team" class="team section-bg">
